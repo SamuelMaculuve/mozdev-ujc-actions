@@ -1,25 +1,17 @@
-name: make dir
-
+name: Create Folder
 on:
   push:
     branches:
       - main
 
 jobs:
-  deploy:
+  create-folder:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do repositório
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Configurar SSH
+      - name: Create Folder
         run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/aws.pem
-          chmod 600 ~/.ssh/aws.pem
-          ssh-keyscan -t rsa 54.227.191.150 >> ~/.ssh/known_hosts
-
-      - name: Criar diretório no servidor
-        run: |
-          ssh -i ~/.ssh/aws.pem usuário@54.227.191.150 "mkdir /home/ubuntu/TESTE1"
+          sshpass -p 'par14' ssh samuel@54.227.191.150 "mkdir /home/ubuntu/nova-pasta"
