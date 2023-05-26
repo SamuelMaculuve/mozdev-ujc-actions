@@ -20,7 +20,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHun Action"
           git checkout -B deploy
-          
+
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
@@ -28,6 +28,9 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan 54.227.191.150 >> ~/.ssh/known_hosts
 
+      - name: SSH into EC2 instance
+        run: |
+          ssh -i ~/.ssh/id_rsa ubunto@54.227.191.150 "/var/www/school-management/ && sh server_deploy.sh"
 
 
  
