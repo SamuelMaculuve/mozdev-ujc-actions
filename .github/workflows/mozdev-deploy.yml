@@ -14,4 +14,4 @@ jobs:
 
       - name: Create Folder
         run: |
-          sshpass -p par14 ssh samuel@54.227.191.150 "mkdir /home/ubuntu/nova-pasta"
+          sshpass -p par14 ssh samuel@54.227.191.150 mkdir /home/ubuntu/nova-pasta
