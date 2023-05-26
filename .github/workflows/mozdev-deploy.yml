@@ -13,10 +13,10 @@ jobs:
     - name: Configurar chaves SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.SSH_IP }} >> ~/.ssh/known_hosts
 
     - name: Clonar repositório
       run: |
-        ssh ubuntu@${{ secrets.SSH_IP }} 'git clone git@github.com:humbertonoa83/rodovia.git'
+        ssh ubuntu@${{ secrets.SSH_IP }} 'git clone git@github.com:SamuelMaculuve/school-management.git'
