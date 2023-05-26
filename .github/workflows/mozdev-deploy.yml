@@ -27,7 +27,7 @@ jobs:
           host: ${{ secrets.SSH_IP }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: 'cd /var/www/mozdev-ujc-actions && sh server_deploy.sh'
+          script: 'cd /var/www/school-management && sh server_deploy.sh'
 
 
   remove-branch:
