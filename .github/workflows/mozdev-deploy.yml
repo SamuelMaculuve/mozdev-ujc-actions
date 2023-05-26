@@ -22,9 +22,11 @@ jobs:
           git checkout -B deploy
 
       - name: Deploy to production server
-        run: | 
-          sshpass -p par14 ssh samuel@54.227.191.150
+        uses: appleboy/ssh-action@master
         with:
+          host: ${{ secrets.SSH_IP }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: 'cd /var/www/mozdev-ujc-actions && sh server_deploy.sh'
 
 
