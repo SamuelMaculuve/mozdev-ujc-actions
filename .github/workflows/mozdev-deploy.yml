@@ -23,7 +23,7 @@ jobs:
 
       - name: Deploy to production server
 
-      uses: appleboy/ssh-action@master
+   
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
