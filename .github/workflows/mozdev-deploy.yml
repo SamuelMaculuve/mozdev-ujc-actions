@@ -3,7 +3,7 @@ name: make dir
 on:
   push:
     branches:
-      - branch-alvo
+      - main
 
 jobs:
   deploy:
