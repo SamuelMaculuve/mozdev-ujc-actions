@@ -30,7 +30,7 @@ jobs:
 
       - name: SSH into EC2 instance
         run: |
-          ssh -i ~/.ssh/id_rsa ubunto@54.227.191.150 "/var/www/school-management/ && sh server_deploy.sh"
+          ssh -i ~/.ssh/id_rsa ubuntu@54.227.191.150 "/var/www/school-management/ && sh server_deploy.sh"
 
 
  
