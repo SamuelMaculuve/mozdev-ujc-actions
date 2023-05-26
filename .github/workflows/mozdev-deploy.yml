@@ -22,13 +22,22 @@ jobs:
           git checkout -B deploy
 
       - name: Deploy to production server
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          host: ${{ secrets.SSH_IP }}
-          username: ${{ secrets.SSH_USERNAME }}
+
+      uses: appleboy/ssh-action@master
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$EC2_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 54.227.191.150 >> ~/.ssh/known_hosts
+
+        #uses: appleboy/ssh-action@master
+        #with:
+          #key: ${{ secrets.SSH_KEY }}
+          #host: ${{ secrets.SSH_IP }}
+          #username: ${{ secrets.SSH_USERNAME }}
           # password: ${{ secrets.SSH_PASSWORD }}
-          script: 'cd /var/www/mozdev-ujc-actions && sh server_deploy.sh'
+          #script: 'cd /var/www/mozdev-ujc-actions && sh server_deploy.sh'
 
 
   remove-branch:
