@@ -20,9 +20,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHun Action"
           git checkout -B deploy
-          git add -f public/
-          git commit -m "Build front-end assets"
-          git push -f origin deploy
 
       - name: Deploy to production server
         uses: appleboy/ssh-action@master
@@ -38,7 +35,7 @@ jobs:
     name: remove deploy branch
     runs-on: ubuntu-latest
     needs: [build-js-css]
-    if: github.ref == 'refs/heads/producao'
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
         with:
