@@ -10,10 +10,10 @@ echo "Deploying Application ..."
    # git reset --hard origin/deploy
 
     # Install dependecies based on lock file
-#    composer install --no-interaction --prefer-dist --optimize-autoloader
+    # composer install --no-interaction --prefer-dist --optimize-autoloader
 
     # Migrate database
-   # php artisan migrate
+    # php artisan migrate
 
     # Note: If you are using queue workers, this is the place to restart them.
     # ...
